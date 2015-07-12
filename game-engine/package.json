@@ -1,0 +1,17 @@
+{
+  "name": "mecha-game-engine",
+  "version": "0.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "author": "",
+  "license": "Public Domain",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-istanbul": "^0.10.0",
+    "gulp-jshint": "^1.11.2",
+    "gulp-mocha": "^2.1.3"
+  }
+}
