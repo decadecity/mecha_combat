@@ -19,7 +19,7 @@ function onError(err) {
 
 gulp.task('lint', function() {
   return gulp
-    .src(['gulpfile.js', 'src/*.js', 'test/*.js'])
+    .src(['gulpfile.js', 'src/*.js', 'test/*.js', 'etc/*.js'])
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
