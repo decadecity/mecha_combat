@@ -9,15 +9,15 @@ var Mecha = function() {
   /* Stats */
   mecha.attack = 0;
   mecha.getCurrentAttack = function() {
-    return mecha.attack * mecha.arms / 100;
+    return mecha.attack * mecha.arms;
   };
   mecha.defend = 0;
   mecha.getCurrentDefend = function() {
-    return mecha.defend * mecha.body / 100;
+    return mecha.defend * mecha.body;
   };
   mecha.move = 0;
   mecha.getCurrentMove = function() {
-    return mecha.move * mecha.legs / 100;
+    return mecha.move * mecha.legs;
   };
 
   return mecha;
