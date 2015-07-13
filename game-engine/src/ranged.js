@@ -2,8 +2,26 @@ var config = require('../etc/ranged.js');
 
 var ranged = {};
 
-ranged.ranges = function(range) {
+/**
+ * Calculates the base chance of a hit at a given range increment.
+ *
+ * This will return -ve chances to hit a long ranges as they can be modified
+ * by bonuses.
+ *
+ * @param range {float} Range to target.
+ *
+ * @returns {float} Base chance of hitting.
+ */
+function rangeIncrements(range) {
+  // Range expressed as % of max range.
   range = range / config.max_range * 100;
+
+  if (range >= 150) {
+    return -1;
+  }
+  if (range >= 125) {
+    return -0.25;
+  }
   if (range >= 100) {
     return 0;
   }
@@ -23,7 +41,8 @@ ranged.ranges = function(range) {
 };
 
 ranged.attack = function(attack, defend, range) {
-  return attack / (defend + range);
+  var modifier = (attack - defend) * config.a_d_ratio;
+  return rangeIncrements(range) + modifier;
 };
 
 module.exports = ranged;
