@@ -126,27 +126,39 @@ describe('Mecha', function() {
       mecha = new Mecha(0.1, 0.1, 0.1);
       mecha.repair();
       assert.equal(mecha.body, 0.3);
+      assert.equal(mecha.body_working, 0.3);
       assert.equal(mecha.arms, 0.3);
+      assert.equal(mecha.arms_working, 0.3);
       assert.equal(mecha.legs, 0.3);
+      assert.equal(mecha.legs_working, 0.3);
     });
     it('should repair individual attributes.', function() {
       mecha = new Mecha(0.1, 0.1, 0.1);
       mecha.repair('body');
       assert.equal(mecha.body, 0.7);
+      assert.equal(mecha.body_working, 0.7);
       assert.equal(mecha.arms, 0.1);
+      assert.equal(mecha.arms_working, 0.1);
       assert.equal(mecha.legs, 0.1);
+      assert.equal(mecha.legs_working, 0.1);
 
       mecha = new Mecha(0.1, 0.1, 0.1);
       mecha.repair('arms');
       assert.equal(mecha.body, 0.1);
+      assert.equal(mecha.body_working, 0.1);
       assert.equal(mecha.arms, 0.7);
+      assert.equal(mecha.arms_working, 0.7);
       assert.equal(mecha.legs, 0.1);
+      assert.equal(mecha.legs_working, 0.1);
 
       mecha = new Mecha(0.1, 0.1, 0.1);
       mecha.repair('legs');
       assert.equal(mecha.body, 0.1);
+      assert.equal(mecha.body_working, 0.1);
       assert.equal(mecha.arms, 0.1);
+      assert.equal(mecha.arms_working, 0.1);
       assert.equal(mecha.legs, 0.7);
+      assert.equal(mecha.legs_working, 0.7);
     });
     it('should not repair above 1.', function() {
       mecha = new Mecha(0.9, 1, 1);
@@ -161,6 +173,27 @@ describe('Mecha', function() {
     });
     it('should have a next order.', function() {
       assert.equal(mecha.next_order, null);
+    });
+  });
+
+  describe('Turn end', function() {
+    beforeEach(function() {
+      mecha = new Mecha(1, 1, 1);
+      mecha.next_order = 'repair';
+      mecha.body_working = 0.5;
+      mecha.arms_working = 0.5;
+      mecha.legs_working = 0.5;
+    });
+    it('should advance the order sequence.', function() {
+      mecha.turnOver();
+      assert.equal(mecha.current_order, 'repair');
+      assert.equal(mecha.next_order, null);
+    });
+    it('should apply the working stats.', function() {
+      mecha.turnOver();
+      assert.equal(mecha.body, mecha.body_working);
+      assert.equal(mecha.arms, mecha.arms_working);
+      assert.equal(mecha.legs, mecha.legs_working);
     });
   });
 });

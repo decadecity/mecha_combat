@@ -54,6 +54,7 @@ var Mecha = function(body, arms, legs) {
 
   function repairLocation(location, amount) {
     mecha[location] = Math.min(1, mecha[location] + amount);
+    mecha[location + '_working'] = mecha[location];
   }
 
   mecha.repair = function(location) {
@@ -66,6 +67,14 @@ var Mecha = function(body, arms, legs) {
       repairLocation('arms', repair_amount);
       repairLocation('legs', repair_amount);
     }
+  };
+
+  mecha.turnOver = function() {
+    mecha.current_order = mecha.next_order;
+    mecha.next_order = null;
+    mecha.body = mecha.body_working;
+    mecha.arms = mecha.arms_working;
+    mecha.legs = mecha.legs_working;
   };
 
   return mecha;
