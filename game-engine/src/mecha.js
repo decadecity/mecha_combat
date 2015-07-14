@@ -9,8 +9,12 @@ var Mecha = function(body, arms, legs) {
 
   /* Attributes */
   mecha.body = body;
+  mecha.body_working = body;
   mecha.arms = arms;
+  mecha.arms_working = arms;
   mecha.legs = legs;
+  mecha.legs_working = legs;
+
 
   /* Stats */
   mecha.attack = 0;
@@ -45,7 +49,7 @@ var Mecha = function(body, arms, legs) {
         location = 'legs';
         break;
     }
-    mecha[location] -= amount;
+    mecha[location + '_working'] -= amount;
   };
 
   function repairLocation(location, amount) {

@@ -45,6 +45,30 @@ describe('Mecha', function() {
     });
   });
 
+  describe('Working attributes', function() {
+    it('should have a working body.', function() {
+      assert.ok(mecha.hasOwnProperty('body_working'));
+      assert.equal(typeof mecha.body_working, 'number');
+      assert.ok(mecha.body_working >= 0);
+      assert.ok(mecha.body_working <= 1);
+      assert.equal(mecha.body, mecha.body_working);
+    });
+    it('should have working legs.', function() {
+      assert.ok(mecha.hasOwnProperty('legs_working'));
+      assert.equal(typeof mecha.legs_working, 'number');
+      assert.ok(mecha.legs_working >= 0);
+      assert.ok(mecha.legs_working <= 1);
+      assert.equal(mecha.legs, mecha.legs_working);
+    });
+    it('should have working arms.', function() {
+      assert.ok(mecha.hasOwnProperty('arms_working'));
+      assert.equal(typeof mecha.arms_working, 'number');
+      assert.ok(mecha.arms_working >= 0);
+      assert.ok(mecha.arms_working <= 1);
+      assert.equal(mecha.arms, mecha.arms_working);
+    });
+  });
+
   describe('Stats', function() {
     it('should have attack.', function() {
       assert.ok(mecha.hasOwnProperty('attack'));
@@ -77,20 +101,23 @@ describe('Mecha', function() {
       mecha = new Mecha(1, 1, 1);
     });
 
-    it('should damage the body', sinon.test(function() {
+    it("should damage the body's working stat.", sinon.test(function() {
       this.stub(Math, 'random').returns(0);
       mecha.damage();
-      assert.equal(mecha.body, 0.75);
+      assert.equal(mecha.body, 1);
+      assert.equal(mecha.body_working, 0.75);
     }));
-    it('should damage the arms', sinon.test(function() {
+    it("should damage the arms' working stat.", sinon.test(function() {
       this.stub(Math, 'random').returns(0.5);
       mecha.damage();
-      assert.equal(mecha.arms, 0.75);
+      assert.equal(mecha.arms, 1);
+      assert.equal(mecha.arms_working, 0.75);
     }));
-    it('should damage the legs', sinon.test(function() {
+    it("should damage the legs' working stat.", sinon.test(function() {
       this.stub(Math, 'random').returns(1);
       mecha.damage();
-      assert.equal(mecha.legs, 0.75);
+      assert.equal(mecha.legs, 1);
+      assert.equal(mecha.legs_working, 0.75);
     }));
   });
 
