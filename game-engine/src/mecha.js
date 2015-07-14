@@ -26,6 +26,11 @@ var Mecha = function(body, arms, legs) {
     return mecha.move * mecha.legs;
   };
 
+  mecha.current_order = 'move';
+  mecha.next_order = null;
+
+  /* Interactions */
+
   mecha.damage = function(amount) {
     amount = amount || config.damage_amount;
     var location;

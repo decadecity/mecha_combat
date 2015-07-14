@@ -127,4 +127,13 @@ describe('Mecha', function() {
       assert.equal(mecha.body, 1);
     });
   });
+
+  describe('Orders', function() {
+    it('should have a current order.', function() {
+      assert.equal(mecha.current_order, 'move');
+    });
+    it('should have a next order.', function() {
+      assert.equal(mecha.next_order, null);
+    });
+  });
 });
