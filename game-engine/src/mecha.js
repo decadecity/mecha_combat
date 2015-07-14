@@ -41,7 +41,22 @@ var Mecha = function(body, arms, legs) {
         break;
     }
     mecha[location] -= amount;
+  };
 
+  function repairLocation(location, amount) {
+    mecha[location] = Math.min(1, mecha[location] + amount);
+  }
+
+  mecha.repair = function(location) {
+    var repair_amount = config.repair_amount;
+    if (location) {
+      repairLocation(location, repair_amount);
+    } else {
+      repair_amount = repair_amount / 3;
+      repairLocation('body', repair_amount);
+      repairLocation('arms', repair_amount);
+      repairLocation('legs', repair_amount);
+    }
   };
 
   return mecha;
