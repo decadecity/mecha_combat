@@ -38,7 +38,7 @@ function rangeIncrements(range) {
     return 0.75;
   }
   return 1;
-};
+}
 
 ranged.attack = function(attack, defend, range) {
   var modifier = (attack - defend) * config.a_d_ratio;

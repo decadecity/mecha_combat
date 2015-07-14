@@ -1,10 +1,14 @@
-var Mecha = function() {
+var Mecha = function(body, arms, legs) {
+  body = body || 0;
+  arms = arms || 0;
+  legs = legs || 0;
+
   mecha = {};
 
   /* Attributes */
-  mecha.body = 0;
-  mecha.arms = 0;
-  mecha.legs = 0;
+  mecha.body = body;
+  mecha.arms = arms;
+  mecha.legs = legs;
 
   /* Stats */
   mecha.attack = 0;
@@ -18,6 +22,10 @@ var Mecha = function() {
   mecha.move = 0;
   mecha.getCurrentMove = function() {
     return mecha.move * mecha.legs;
+  };
+
+  mecha.damage = function() {
+
   };
 
   return mecha;

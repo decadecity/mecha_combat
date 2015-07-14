@@ -2,9 +2,16 @@ var assert = require('assert');
 
 var Mecha = require('../src/mecha.js');
 
-var mecha = new Mecha();
+var mecha;
 
 describe('Mecha', function() {
+  beforeEach(function() {
+    mecha = new Mecha(Math.random(), Math.random(), Math.random());
+  });
+  afterEach(function() {
+    mecha = null;
+  });
+
   it('should be an object.', function() {
     assert.equal(typeof mecha, 'object');
   });
@@ -57,6 +64,16 @@ describe('Mecha', function() {
       assert.equal(typeof mecha.getCurrentMove, 'function');
       assert.ok(mecha.getCurrentMove() >= 0);
       assert.ok(mecha.getCurrentMove() <= 1);
+    });
+  });
+
+  describe('Damage', function() {
+    beforeEach(function() {
+      mecha = new Mecha(1, 1, 1);
+    });
+    it('should take damage.', function() {
+      assert.ok(mecha.hasOwnProperty('damage'));
+      assert.equal(typeof mecha.damage, 'function');
     });
   });
 });
