@@ -6,6 +6,7 @@ var Mecha = rewire('../src/mecha.js');
 
 Mecha.__set__('config', {
   damage_amount: 0.25,
+  repair_amount: 0.6,
 });
 
 var mecha;
@@ -50,7 +51,6 @@ describe('Mecha', function() {
       assert.equal(typeof mecha.attack, 'number');
       assert.ok(mecha.attack >= 0);
       assert.ok(mecha.attack <= 1);
-      assert.equal(typeof mecha.getCurrentAttack, 'function');
       assert.ok(mecha.getCurrentAttack() >= 0);
       assert.ok(mecha.getCurrentAttack() <= 1);
     });
@@ -59,7 +59,6 @@ describe('Mecha', function() {
       assert.equal(typeof mecha.defend, 'number');
       assert.ok(mecha.defend >= 0);
       assert.ok(mecha.defend <= 1);
-      assert.equal(typeof mecha.getCurrentDefend, 'function');
       assert.ok(mecha.getCurrentDefend() >= 0);
       assert.ok(mecha.getCurrentDefend() <= 1);
     });
@@ -68,37 +67,29 @@ describe('Mecha', function() {
       assert.equal(typeof mecha.move, 'number');
       assert.ok(mecha.move >= 0);
       assert.ok(mecha.move <= 1);
-      assert.equal(typeof mecha.getCurrentMove, 'function');
       assert.ok(mecha.getCurrentMove() >= 0);
       assert.ok(mecha.getCurrentMove() <= 1);
     });
   });
 
   describe('Damage', function() {
-    it('should take damage.', function() {
-      assert.ok(mecha.hasOwnProperty('damage'));
-      assert.equal(typeof mecha.damage, 'function');
-
-      describe('Damage each part', function() {
-        beforeEach(function() {
-          mecha = new Mecha(1, 1, 1);
-        });
-        it('should damage the legs', sinon.test(function() {
-          this.stub(Math, 'random').returns(1);
-          mecha.damage();
-          assert.equal(mecha.legs, 0.75);
-        }));
-        it('should damage the arms', sinon.test(function() {
-          this.stub(Math, 'random').returns(0.5);
-          mecha.damage();
-          assert.equal(mecha.arms, 0.75);
-        }));
-        it('should damage the body', sinon.test(function() {
-          this.stub(Math, 'random').returns(0);
-          mecha.damage();
-          assert.equal(mecha.body, 0.75);
-        }));
-      });
+    beforeEach(function() {
+      mecha = new Mecha(1, 1, 1);
     });
+    it('should damage the legs', sinon.test(function() {
+      this.stub(Math, 'random').returns(1);
+      mecha.damage();
+      assert.equal(mecha.legs, 0.75);
+    }));
+    it('should damage the arms', sinon.test(function() {
+      this.stub(Math, 'random').returns(0.5);
+      mecha.damage();
+      assert.equal(mecha.arms, 0.75);
+    }));
+    it('should damage the body', sinon.test(function() {
+      this.stub(Math, 'random').returns(0);
+      mecha.damage();
+      assert.equal(mecha.body, 0.75);
+    }));
   });
 });
