@@ -41,6 +41,10 @@ gulp.task('watch', function() {
     watching = true;
     gulp.run('lint', 'test');
   });
+  gulp.watch(['etc/*.js'], function() {
+    watching = true;
+    gulp.run('lint');
+  });
 });
 
 gulp.task('default', ['lint', 'test', 'watch']);

@@ -1,6 +1,12 @@
 var assert = require('assert');
+var rewire = require('rewire');
+var sinon = require('sinon');
 
-var Mecha = require('../src/mecha.js');
+var Mecha = rewire('../src/mecha.js');
+
+Mecha.__set__('config', {
+  damage_amount: 0.25,
+});
 
 var mecha;
 
@@ -13,6 +19,7 @@ describe('Mecha', function() {
   });
 
   it('should be an object.', function() {
+    mecha = new Mecha();
     assert.equal(typeof mecha, 'object');
   });
 
@@ -68,12 +75,32 @@ describe('Mecha', function() {
   });
 
   describe('Damage', function() {
-    beforeEach(function() {
-      mecha = new Mecha(1, 1, 1);
-    });
     it('should take damage.', function() {
       assert.ok(mecha.hasOwnProperty('damage'));
       assert.equal(typeof mecha.damage, 'function');
+
+      describe('Damage each part', function() {
+        beforeEach(function() {
+          mecha = new Mecha(1, 1, 1);
+        });
+        it('should damage the legs', sinon.test(function() {
+          this.stub(Math, 'random').returns(1);
+          mecha.damage();
+          assert.equal(mecha.legs, 0.75);
+        }));
+
+        it('should damage the arms', sinon.test(function() {
+          this.stub(Math, 'random').returns(0.5);
+          mecha.damage();
+          assert.equal(mecha.arms, 0.75);
+        }));
+
+        it('should damage the body', sinon.test(function() {
+          this.stub(Math, 'random').returns(0);
+          mecha.damage();
+          assert.equal(mecha.body, 0.75);
+        }));
+      });
     });
   });
 });

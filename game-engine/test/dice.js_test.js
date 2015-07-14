@@ -10,19 +10,12 @@ dice.__set__('config', {
 });
 
 describe('Dice', function() {
-  var sandbox;
-  beforeEach(function () {
-    sandbox = sinon.sandbox.create();
-  });
-  afterEach(function () {
-    sandbox.restore();
-  });
   describe('Roll', function() {
-    it('should be able to roll.', function() {
+    it('should be able to roll.', sinon.test(function() {
       assert.ok(dice.hasOwnProperty('roll'));
       assert.equal(typeof dice.roll, 'function');
-      sandbox.stub(Math, 'random').returns(1);
+      this.stub(Math, 'random').returns(1);
       assert.equal(dice.roll(1, 1), 1);
-    });
+    }));
   });
 });

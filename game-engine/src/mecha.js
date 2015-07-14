@@ -1,3 +1,5 @@
+var config = require('../etc/mecha.js');
+
 var Mecha = function(body, arms, legs) {
   body = body || 0;
   arms = arms || 0;
@@ -24,7 +26,21 @@ var Mecha = function(body, arms, legs) {
     return mecha.move * mecha.legs;
   };
 
-  mecha.damage = function() {
+  mecha.damage = function(amount) {
+    amount = amount || config.damage_amount;
+    var location;
+    switch (Math.floor(Math.random() * 2)) {
+      case 0:
+        location = 'body';
+        break;
+      case 1:
+        location = 'arms';
+        break;
+      case 2:
+        location = 'legs';
+        break;
+    }
+    mecha[location] -= amount;
 
   };
 
