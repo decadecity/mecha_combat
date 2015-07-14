@@ -88,13 +88,11 @@ describe('Mecha', function() {
           mecha.damage();
           assert.equal(mecha.legs, 0.75);
         }));
-
         it('should damage the arms', sinon.test(function() {
           this.stub(Math, 'random').returns(0.5);
           mecha.damage();
           assert.equal(mecha.arms, 0.75);
         }));
-
         it('should damage the body', sinon.test(function() {
           this.stub(Math, 'random').returns(0);
           mecha.damage();
