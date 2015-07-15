@@ -1,0 +1,88 @@
+/* Custom Styles */
+
+body {
+	max-width: 400px;
+	margin: auto;
+	padding: 0 20px;
+	background-color: black;
+	color: green;
+}
+
+.row {
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+
+a {
+	color: green;
+	text-decoration: underline;
+}
+
+a:hover {
+    color: green;
+    text-decoration: none;
+}
+
+.btn-default {
+	background-color: green;
+	border-color: green;
+	color: black;
+	text-decoration: none;
+}
+
+.btn-default:hover, 
+.btn-default:active
+ {
+	background-color: black;
+	border-color: green;
+	color: green;
+}
+
+
+
+
+/* Ready Page */
+
+#example-mecha {
+	width: 80%;
+	height: 200px;
+	background-color: green;
+	margin: 10px auto;
+}
+
+
+
+
+
+/* Current Order */
+
+#banner-top,
+#banner-bottom {
+	background-color: green;
+	color: black;
+}
+
+#banner-bottom {
+	margin-top: 12px;
+}
+
+#banner-bottom a {
+	color: black;
+}
+
+
+
+
+
+/* Attack */
+
+.input-number {
+	background-color: black;
+	color: green;
+	text-align: center;
+	border-color: green;
+}
+
+.input-focus {
+	border-color: green;
+}
