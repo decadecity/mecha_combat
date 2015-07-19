@@ -1,6 +1,6 @@
 var config = require('../etc/mecha.js');
 
-var Mecha = function(body, arms, legs) {
+function Mecha(body, arms, legs) {
   body = body || 0;
   arms = arms || 0;
   legs = legs || 0;
