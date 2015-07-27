@@ -15,29 +15,22 @@
   <body>
 
     <div id="banner-top" class="text-center">
-      <p>Current Order: Move</p>
+      <p>Next Order: <span id="next_order"></span></p>
     </div>
 
     <div class="container-fluid text-center">
       <div class="row">
         <h1>Select Repair Section</h1>
+
+        <form action="/" id="repair">
+          <button class="btn btn-default btn-lg btn-block" value="head">Head &amp; Arms (30%)</button>
+          <button class="btn btn-default btn-lg btn-block" value="torso">Torso (30%)</button>
+          <button class="btn btn-default btn-lg btn-block" value="legs">Legs (30%)</button>
+          <button class="btn btn-default btn-lg btn-block" value="alls">All Sections (10%)</button>
+        </form>
+
       </div>
 
-      <div class="row">
-        <a class="btn btn-default btn-lg btn-block" role="button" href="/orders/">Head &amp; Arms (30%)</a>
-      </div>
-
-      <div class="row">
-        <a class="btn btn-default btn-lg btn-block" role="button" href="/orders/">Torso (30%)</a>
-      </div>
-
-      <div class="row">
-        <a class="btn btn-default btn-lg btn-block" role="button" href="/orders/">Legs (30%)</a>
-      </div>
-
-      <div class="row">
-        <a class="btn btn-default btn-lg btn-block" role="button" href="/orders/">All Sections (10%)</a>
-      </div>
     </div>
 
     <div id="banner-bottom" class="text-center">
@@ -45,6 +38,6 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
   </body>
 </html>
