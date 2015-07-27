@@ -42,16 +42,15 @@
     <script>
       (function() {
 
-        // Adjustment of any value should cause the other two values to change but 
-        // half in the opposite direction.
-        //
-        // This means the minimum/maximum value that the player can ajust is 
-        // dependant on the other values not reaching min/max.
+        // Adjusting one value adjusts the other two value inverse half. 
 
         var mecha_values = document.querySelectorAll("#mecha_values input"),
             attack_value = document.getElementById("attack_value"),
             defence_value = document.getElementById("defence_value"),
             move_value = document.getElementById("move_value");
+
+        // This should be done once but not got there yet. 
+        // Click is the wrong event.
 
         attack_value.addEventListener("click", function(){
           var t = 33 - this.value;
