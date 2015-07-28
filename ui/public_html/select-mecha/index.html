@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Mecha Commander | Select Your Mecha</title>
+
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+  	<div class="container-fluid text-center">
+  		<div class="row">
+        <h1>Select Your Mecha</h1>
+
+        <form action="/ready/" id="mecha_values">
+          <div class="form-group">
+            <label for="attack">Attack</label><br/>
+            <input type="range" min="3" max="97" value="33" id="attack_value">
+          </div>
+          <div class="form-group">
+            <label for="defence">Defence</label><br/>
+            <input type="range" min="3" max="97" value="33" id="defence_value">
+          </div>
+          <div class="form-group">
+            <label for="move">Move</label><br/>
+            <input type="range" min="3" max="97" value="33" id="move_value">
+          </div>          
+          <button class="btn btn-default btn-lg btn-block">Build Mecha</button>
+        </form>
+
+      </div>
+	</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script>
+      (function() {
+
+        // Adjusting one value adjusts the other two value inverse half. 
+
+        var mecha_values = document.querySelectorAll("#mecha_values input"),
+            attack_value = document.getElementById("attack_value"),
+            defence_value = document.getElementById("defence_value"),
+            move_value = document.getElementById("move_value");
+
+        // This should be done once but not got there yet. 
+        // Click is the wrong event.
+
+        attack_value.addEventListener("click", function(){
+          var t = 33 - this.value;
+          defence_value.value = Number(defence_value.value) + (t / 2);
+          move_value.value = Number(move_value.value) + (t / 2);
+        }, false);
+
+        defence_value.addEventListener("click", function(){
+          var t = 33 - this.value;
+          attack_value.value = Number(attack_value.value) + (t / 2);
+          move_value.value = Number(move_value.value) + (t / 2);
+        }, false);
+
+        move_value.addEventListener("click", function(){
+          var t = 33 - this.value;
+          defence_value.value = Number(defence_value.value) + (t / 2);
+          attack_value.value = Number(attack_value.value) + (t / 2);
+        }, false);
+      })();
+
+    </script>
+
+  </body>
+</html>

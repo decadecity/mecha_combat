@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Mecha Commander | Orders | Attack | Damage Report</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="container-fluid text-center">
+      <div class="row">
+        <h1>Damage Report</h1>
+      </div>
+      <div class="row">
+        <button class="btn btn-default btn-lg btn-block">Head &amp; Arms (<span id="arms"></span>%)</button>
+      </div>
+
+      <div class="row">
+        <button class="btn btn-default btn-lg btn-block">Torso (<span id="body"></span>%)</button>
+      </div>
+
+      <div class="row">
+        <button class="btn btn-default btn-lg btn-block">Legs (<span id="legs"></span>%)</button>
+      </div>
+
+      <div class="row">
+        <a class="btn btn-default btn-lg btn-block" href="/orders/" id="next">Advance</a>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+      var arms = 100,
+          body = 50,
+          legs = 0;
+
+      document.getElementById("arms").innerHTML = arms;
+      document.getElementById("body").innerHTML = body;
+      document.getElementById("legs").innerHTML = legs;
+
+      if (arms === 0 || body === 0 || legs === 0) {
+        document.getElementById("next").href = "defeat.html";
+      }
+    </script>
+  </body>
+</html>
