@@ -1,21 +1,22 @@
 /* Custom Styles */
 
 body {
-	max-width: 400px;
-	margin: auto;
-	padding: 0 20px;
-	background-color: black;
-	color: green;
+  max-width: 400px;
+  margin: auto;
+  padding: 0 20px;
+  background-color: black;
+  color: green;
+  font-family: monospace;
 }
 
 .row {
-	margin-top: 12px;
-	margin-bottom: 12px;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 a {
-	color: green;
-	text-decoration: underline;
+  color: green;
+  text-decoration: underline;
 }
 
 a:hover {
@@ -24,18 +25,18 @@ a:hover {
 }
 
 .btn-default {
-	background-color: green;
-	border-color: green;
-	color: black;
-	text-decoration: none;
+  background-color: green;
+  border-color: green;
+  color: black;
+  text-decoration: none;
 }
 
-.btn-default:hover, 
+.btn-default:hover,
 .btn-default:active
  {
-	background-color: black;
-	border-color: green;
-	color: green;
+  background-color: black;
+  border-color: green;
+  color: green;
 }
 
 
@@ -44,10 +45,10 @@ a:hover {
 /* Ready Page */
 
 #example-mecha {
-	width: 80%;
-	height: 200px;
-	background-color: green;
-	margin: 10px auto;
+  width: 80%;
+  height: 200px;
+  background-color: green;
+  margin: 10px auto;
 }
 
 
@@ -58,16 +59,16 @@ a:hover {
 
 #banner-top,
 #banner-bottom {
-	background-color: green;
-	color: black;
+  background-color: green;
+  color: black;
 }
 
 #banner-bottom {
-	margin-top: 12px;
+  margin-top: 12px;
 }
 
 #banner-bottom a {
-	color: black;
+  color: black;
 }
 
 
@@ -77,12 +78,12 @@ a:hover {
 /* Attack */
 
 .input-number {
-	background-color: black;
-	color: green;
-	text-align: center;
-	border-color: green;
+  background-color: black;
+  color: green;
+  text-align: center;
+  border-color: green;
 }
 
 .input-focus {
-	border-color: green;
+  border-color: green;
 }
