@@ -22,6 +22,6 @@ function Turn() {
   };
 
   return turn;
-};
+}
 
 module.exports = Turn;

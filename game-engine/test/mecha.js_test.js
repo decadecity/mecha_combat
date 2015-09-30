@@ -196,4 +196,49 @@ describe('Mecha', function() {
       assert.equal(mecha.legs, mecha.legs_working);
     });
   });
+
+  describe('Persist state', function() {
+    var storage;
+
+    function storageMock() {
+      var store = {};
+
+      return {
+        setItem: function(key, value) {
+          store[key] = value;
+        },
+        getItem: function(key) {
+          return store[key];
+        },
+        removeItem: function(key) {
+          delete store[key];
+        },
+        get length() {
+          return Object.keys(store).length;
+        },
+        key: function(i) {
+          var keys = Object.keys(store);
+          return keys[i] || null;
+        }
+      };
+    }
+
+    beforeEach(function() {
+      storage = storageMock();
+      mecha = new Mecha(1, 1, 1, storage);
+    });
+    it('should save after creation', function() {
+      mecha = new Mecha(0.1, 0.2, 0.3, storage);
+      assert.deepEqual(storage.getItem('mecha'), {
+        'body': 0.1,
+        'body_working': 0.1,
+        'arms': 0.2,
+        'arms_working': 0.2,
+        'legs': 0.3,
+        'legs_working': 0.3,
+        'current_order': 'move',
+        'next_order': null
+      });
+    });
+  });
 });

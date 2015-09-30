@@ -9,7 +9,7 @@ var actions = [
   'repair',
   'move',
   'shoot',
-]
+];
 
 Turn.__set__('config', {
   'actions': actions,

@@ -1,11 +1,26 @@
 var config = require('../etc/mecha.js');
 
-function Mecha(body, arms, legs) {
+function Mecha(body, arms, legs, storage) {
   body = body || 0;
   arms = arms || 0;
   legs = legs || 0;
 
-  mecha = {};
+  function save() {
+    if (storage && typeof storage.setItem === 'function') {
+      storage.setItem('mecha', {
+        'body': mecha.body,
+        'body_working': mecha.body_working,
+        'arms': mecha.arms,
+        'arms_working': mecha.arms_working,
+        'legs': mecha.legs,
+        'legs_working': mecha.legs_working,
+        'current_order': mecha.current_order,
+        'next_order': mecha.next_order
+      });
+    }
+  }
+
+  var mecha = {};
 
   /* Attributes */
   mecha.body = body;
@@ -14,6 +29,12 @@ function Mecha(body, arms, legs) {
   mecha.arms_working = arms;
   mecha.legs = legs;
   mecha.legs_working = legs;
+
+  // Orders
+  mecha.current_order = 'move';
+  mecha.next_order = null;
+
+  save();
 
 
   /* Stats */
@@ -29,9 +50,6 @@ function Mecha(body, arms, legs) {
   mecha.getCurrentMove = function() {
     return mecha.move * mecha.legs;
   };
-
-  mecha.current_order = 'move';
-  mecha.next_order = null;
 
   /* Interactions */
 
@@ -50,11 +68,13 @@ function Mecha(body, arms, legs) {
         break;
     }
     mecha[location + '_working'] -= amount;
+    //save
   };
 
   function repairLocation(location, amount) {
     mecha[location] = Math.min(1, mecha[location] + amount);
     mecha[location + '_working'] = mecha[location];
+    //save
   }
 
   mecha.repair = function(location) {
@@ -75,10 +95,11 @@ function Mecha(body, arms, legs) {
     mecha.body = mecha.body_working;
     mecha.arms = mecha.arms_working;
     mecha.legs = mecha.legs_working;
+    //save
   };
 
   return mecha;
-};
+}
 
 
 module.exports = Mecha;
