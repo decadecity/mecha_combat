@@ -30,41 +30,40 @@
           <div class="form-group">
             <label for="move">Move</label><br/>
             <input type="range" min="3" max="97" value="33" id="move_value">
-          </div>          
+          </div>
           <button class="btn btn-default btn-lg btn-block">Build Mecha</button>
         </form>
 
       </div>
 	</div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script>
       (function() {
 
-        // Adjusting one value adjusts the other two value inverse half. 
+        // Adjusting one value adjusts the other two value inverse half.
 
         var mecha_values = document.querySelectorAll("#mecha_values input"),
             attack_value = document.getElementById("attack_value"),
             defence_value = document.getElementById("defence_value"),
             move_value = document.getElementById("move_value");
 
-        // This should be done once but not got there yet. 
-        // Click is the wrong event.
+        // This should be done once but not got there yet.
 
-        attack_value.addEventListener("click", function(){
+        attack_value.addEventListener("change", function(){
           var t = 33 - this.value;
           defence_value.value = Number(defence_value.value) + (t / 2);
           move_value.value = Number(move_value.value) + (t / 2);
         }, false);
 
-        defence_value.addEventListener("click", function(){
+        defence_value.addEventListener("change", function(){
           var t = 33 - this.value;
           attack_value.value = Number(attack_value.value) + (t / 2);
           move_value.value = Number(move_value.value) + (t / 2);
         }, false);
 
-        move_value.addEventListener("click", function(){
+        move_value.addEventListener("change", function(){
           var t = 33 - this.value;
           defence_value.value = Number(defence_value.value) + (t / 2);
           attack_value.value = Number(attack_value.value) + (t / 2);
